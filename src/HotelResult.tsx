@@ -5,7 +5,7 @@ function HotelResult(hotel:any) {
 
     function toggleExpandDescription() {
         const currentState = expandDescription
-        return setExpandDescription(!currentState)
+        setExpandDescription(!currentState)
     }
 
     return (
@@ -20,3 +20,5 @@ function HotelResult(hotel:any) {
     )
 
 }
+
+export default HotelResult
