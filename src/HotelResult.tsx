@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function HotelResult(hotel:any) {
     const [expandDescription, setExpandDescription] = useState<boolean>(false)
