@@ -16,8 +16,8 @@ function HotelResultList() {
         const fetchData = async() => {
             const response = await fetch(DATA_API);
             const data = await response.json();
-            setHotels(data)
-            applyUserSort()
+            const sortedData = sortHotels(data);
+            setHotels(sortedData)
         }
         fetchData();
         
@@ -26,7 +26,7 @@ function HotelResultList() {
 
     function sortHotels(hotelList: Hotel[], by:sortApplied = 'alphabetically'):Hotel[] {
         // To do: write sort function that sorts hotels and then calls setHotels
-        const updatedHotels = [...hotels]
+        const updatedHotels = [...hotelList]
         if (by==='price') {
             updatedHotels.sort((a,b) => {
                 return b.bookingDetails.price.amount - a.bookingDetails.price.amount
