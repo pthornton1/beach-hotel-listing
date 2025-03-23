@@ -32,7 +32,7 @@ function HotelResultList() {
                 <Col sm={3}>
                     < SortResults sortHotels={sortHotels}/>
                 </Col>
-                <Col sm={4}>
+                <Col>
                     {hotels.map((hotel) => (
                     < HotelResult hotel={hotel} />
                     ))}
