@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url('https://static.onthebeach.co.uk/fe-code-test/background.png');
-  background-size: auto 200%;
+  background-size: contain;
   /* background-repeat:round; */
   /* background-size: 50%; */
 
