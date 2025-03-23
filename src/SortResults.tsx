@@ -19,4 +19,6 @@ function SortResults({sortHotels}:props) {
         </div>
     )
 
-}
+};
+
+export default SortResults;
