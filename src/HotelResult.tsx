@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Hotel } from './types'
 
-function HotelResult(hotel:any) {
+function HotelResult({hotel}:{hotel:Hotel}) {
     const [expandDescription, setExpandDescription] = useState<boolean>(false)
 
     function toggleExpandDescription() {
@@ -13,7 +14,7 @@ function HotelResult(hotel:any) {
             <ul>   
                 {/* Loop through attributes and show to user */}
                 <li>Placeholder</li>
-                <li>{hotel}</li>
+                <li>{hotel.resort.countryName}</li>
             </ul>
             <button onClick={toggleExpandDescription}>Expand Description</button>
         </div>
