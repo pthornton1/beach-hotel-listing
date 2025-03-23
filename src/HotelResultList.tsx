@@ -49,12 +49,12 @@ function HotelResultList() {
     };
 
     return (
-        <Container className="pt-5">
+        <Container className="py-5">
             <Row> 
-                <Col sm={3}>
+                <Col md={3}>
                     < SortResults sortHotels={sortHotels}/>
                 </Col>
-                <Col>
+                <Col md={9}>
                     {hotels.map((hotel) => (
                     < HotelResult hotel={hotel} />
                     ))}

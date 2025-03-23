@@ -2,8 +2,6 @@ import { useState } from "react";
 import {sortApplied, sortResultProps} from './types'
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 
@@ -38,7 +36,7 @@ function SortResults({sortHotels}:sortResultProps) {
         //     </Container>
         // </div>
 
-<Container className=''>
+<Container className='pb-4'>
 <div className="d-grid gap-1">
 
             <Button variant={sort === 'alphabetically' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('alphabetically')}>
