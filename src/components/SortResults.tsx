@@ -1,5 +1,6 @@
+import React from 'react';
 import { useState } from "react";
-import {sortApplied, sortResultProps} from './types'
+import {sortApplied, sortResultProps} from '../types/types'
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';

@@ -1,5 +1,6 @@
+import React from 'react';
 import { useState } from "react";
-import { Hotel } from './types'
+import { Hotel } from '../types/types'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

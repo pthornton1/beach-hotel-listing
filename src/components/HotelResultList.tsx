@@ -1,8 +1,9 @@
+import React from 'react';
 import { useEffect, useState } from "react";
 import SortResults from "./SortResults";
 import HotelResult from "./HotelResult";
-import { DATA_API } from "./config";
-import {Hotel, sortApplied} from './types'
+import { DATA_API } from "../config/config";
+import {Hotel, sortApplied} from '../types/types'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
