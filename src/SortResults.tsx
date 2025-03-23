@@ -4,6 +4,8 @@ import {sortApplied, sortResultProps} from './types'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
 
 function SortResults({sortHotels}:sortResultProps) {
     const [sort, setSort] = useState<sortApplied>('alphabetically');
@@ -14,22 +16,44 @@ function SortResults({sortHotels}:sortResultProps) {
     };
 
     return (
-        <div className="sortResults">
-            <Container>
-                <Col>
-                    <Row>
-                        <button onClick={() => changeSort('alphabetically')}>sort <b>alphabetically</b></button>
-                        {sort === 'alphabetically' ? 'yes' :'no'}
-                    </Row>
-                    <Row>
-                        <button onClick={() => changeSort('price')}>sort by <b>price</b></button>
-                    </Row>
-                    <Row>
-                        <button onClick={() => changeSort('rating')}>Sort by <b>star rating</b></button>
-                    </Row>
-                </Col>
-            </Container>
-        </div>
+        // <div className="d-grid gap-2">
+        //     <Container>
+        //         <Col>
+        //             <Row>
+        //                 <Button variant={sort === 'alphabetically' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('alphabetically')}>
+        //                     sort <b>alphabetically</b> 🔤
+        //                 </Button>
+        //             </Row>
+        //             <Row>
+        //                 <Button variant={sort === 'price' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('price')}>
+        //                     sort by <b>price</b> 💵
+        //                 </Button>
+        //             </Row>
+        //             <Row>
+        //                 <Button variant={sort === 'rating' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('rating')}>
+        //                     Sort by <b>star rating</b> ⭐️
+        //                 </Button>
+        //             </Row>
+        //         </Col>
+        //     </Container>
+        // </div>
+
+<Container className=''>
+<div className="d-grid gap-1">
+
+            <Button variant={sort === 'alphabetically' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('alphabetically')}>
+                sort <b>alphabetically</b> 🔤
+            </Button>
+
+            <Button variant={sort === 'price' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('price')}>
+                sort by <b>price</b> 💵
+            </Button>
+
+            <Button variant={sort === 'rating' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('rating')}>
+                Sort by <b>star rating</b> ⭐️
+            </Button>
+</div>
+</Container>
     )
 
 };

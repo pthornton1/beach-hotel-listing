@@ -49,7 +49,7 @@ function HotelResultList() {
     };
 
     return (
-        <Container>
+        <Container className="pt-5">
             <Row> 
                 <Col sm={3}>
                     < SortResults sortHotels={sortHotels}/>
