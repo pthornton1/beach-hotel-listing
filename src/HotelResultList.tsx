@@ -16,13 +16,15 @@ function HotelResultList() {
         const fetchData = async() => {
             const response = await fetch(DATA_API);
             const data = await response.json();
-            // const hotels = [... data]
             setHotels(data)
+            applyUserSort()
         }
         fetchData();
+        
     },[]);
 
-    function sortHotels(by:sortApplied = 'alphabetically') {
+
+    function sortHotels(hotelList: Hotel[], by:sortApplied = 'alphabetically'):Hotel[] {
         // To do: write sort function that sorts hotels and then calls setHotels
         const updatedHotels = [...hotels]
         if (by==='price') {
@@ -45,16 +47,20 @@ function HotelResultList() {
                 return 0
             })
         }
-        setHotels(updatedHotels)
+        return updatedHotels;
     };
+      
+    function applyUserSort(by:sortApplied = 'alphabetically') {
+        setHotels(sortHotels(hotels, by))
+    }
 
     return (
         <Container className="py-5">
             <Row> 
                 <Col md={3}>
-                    < SortResults sortHotels={sortHotels}/>
+                    < SortResults applyUserSort={applyUserSort}/>
                 </Col>
-                <Col md={9}>
+                <Col md={9} className="d-grid gap-1">
                     {hotels.map((hotel) => (
                     < HotelResult hotel={hotel} />
                     ))}

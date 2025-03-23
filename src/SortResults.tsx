@@ -5,12 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 
-function SortResults({sortHotels}:sortResultProps) {
+function SortResults({applyUserSort}:sortResultProps) {
     const [sort, setSort] = useState<sortApplied>('alphabetically');
 
     function changeSort(changeTo:sortApplied) {
         setSort(changeTo)
-        sortHotels(changeTo)
+        applyUserSort(changeTo)
     };
 
     return (

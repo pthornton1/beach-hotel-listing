@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('https://static.onthebeach.co.uk/fe-code-test/background.png');
+  background-size: auto 200%;
+  /* background-repeat:round; */
+  /* background-size: 50%; */
+
 }
 
 code {

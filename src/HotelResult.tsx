@@ -4,6 +4,9 @@ import { Hotel } from './types'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+
+
 
 function HotelResult({hotel}:{hotel:Hotel}) {
     const [expandDescription, setExpandDescription] = useState<boolean>(false);
@@ -95,7 +98,8 @@ function HotelResult({hotel}:{hotel:Hotel}) {
 
     return (
         <div className="hotelResult" key={hotel.resort.id}>
-            <Container>
+            <Card bg='Light'>
+            <Card.Body>
                 <Row>
                     <Col xs={8}>
                         <img src={hotel.resort.image.url} alt={hotel.resort.image.description} />
@@ -121,7 +125,9 @@ function HotelResult({hotel}:{hotel:Hotel}) {
                         {expandDescription ?  <><h3>Overview</h3><p>{hotel.resort.overview}</p></>: (<></>)}
                     </div>
                 </Row> 
-            </Container>
+            </Card.Body>
+
+            </Card>
         </div>
     )
 

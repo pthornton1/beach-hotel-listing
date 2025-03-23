@@ -43,5 +43,5 @@ export interface Hotel {
 
 export type sortApplied = "alphabetically" | "price" | "rating";
 export interface sortResultProps {
-    sortHotels: (by:sortApplied) => void;
+    applyUserSort: (by:sortApplied) => void;
   };
