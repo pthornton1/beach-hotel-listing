@@ -1,9 +1,6 @@
 import { useState } from "react";
+import {sortApplied, sortResultProps} from './types'
 
-type sortApplied = "alphabetically" | "price" | "rating";
-type sortResultProps = {
-    sortHotels: (by:sortApplied) => void;
-  };
 
 function SortResults({sortHotels}:sortResultProps) {
     const [sort, setSort] = useState<sortApplied>('alphabetically');
