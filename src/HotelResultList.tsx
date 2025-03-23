@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import SortResults from "./SortResults";
 import HotelResult from "./HotelResult";
+import { DATA_API } from "./config";
 
 
 function HotelResultList() {
     const [hotels, setHotels] = useState([]);
 
-    useEffect(() => {
-        // To do: write async fetch of data and then call setHotels
+    useEffect(() =>  {
+        const fetchData = async() => {
+            const response = await fetch(DATA_API);
+            const data = await response.json();
+            setHotels(data)
+        }
+        fetchData();
     },[]);
 
     function sortHotels(by:string = 'alphabetically') {
@@ -17,7 +23,7 @@ function HotelResultList() {
     return (
         <div className="hotelResultList">
             < SortResults sortHotels={sortHotels}/>
-            < HotelResult hotel={hotels}/>
+            {/* < HotelResult hotel={hotels}/> */}
 
         </div>
     );
