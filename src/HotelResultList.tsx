@@ -4,6 +4,10 @@ import HotelResult from "./HotelResult";
 import { DATA_API } from "./config";
 import {Hotel, sortApplied} from './types'
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function HotelResultList() {
     const [hotels, setHotels] = useState<Hotel[]>([]);
@@ -23,13 +27,18 @@ function HotelResultList() {
     };
 
     return (
-        <div className="hotelResultList">
-            < SortResults sortHotels={sortHotels}/>
-            {hotels.map((hotel) => (
-             < HotelResult hotel={hotel} />
-            ))}
-
-        </div>
+        <Container>
+            <Row> 
+                <Col sm={3}>
+                    < SortResults sortHotels={sortHotels}/>
+                </Col>
+                <Col sm={4}>
+                    {hotels.map((hotel) => (
+                    < HotelResult hotel={hotel} />
+                    ))}
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

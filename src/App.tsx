@@ -1,9 +1,12 @@
 import './App.css';
 import HotelResultList from './HotelResultList';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <HotelResultList/>
     </div>
   );

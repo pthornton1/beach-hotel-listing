@@ -11,12 +11,13 @@ function HotelResult({hotel}:{hotel:Hotel}) {
 
     return (
         <div className="hotelResult">
-            <ul>   
-                {/* Loop through attributes and show to user */}
+            <ul>
+                <h1></h1> 
                 <li>Placeholder</li>
                 <li>{hotel.resort.countryName}</li>
+                <button onClick={toggleExpandDescription}>Expand Description</button>
             </ul>
-            <button onClick={toggleExpandDescription}>Expand Description</button>
+            
         </div>
     )
 
