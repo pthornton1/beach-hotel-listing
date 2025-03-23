@@ -1,1 +1,1 @@
-export const DATA_API = "'https://static.onthebeach.co.uk/fe-code-test/data.json'"
+export const DATA_API = "https://static.onthebeach.co.uk/fe-code-test/data.json"
