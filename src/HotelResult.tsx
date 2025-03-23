@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 
 
 
@@ -96,38 +98,69 @@ function HotelResult({hotel}:{hotel:Hotel}) {
         return <>{ratingString}</>
     }
 
+//     <div class="card mb-3" style="max-width: 540px;">
+//   <div class="row no-gutters">
+//     <div class="col-md-4">
+//       <img src="..." class="card-img" alt="...">
+//     </div>
+//     <div class="col-md-8">
+//       <div class="card-body">
+//         <h5 class="card-title">Card title</h5>
+//         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+//         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+//       </div>
+//     </div>
+//   </div>
+// </div>
     return (
         <div className="hotelResult" key={hotel.resort.id}>
-            <Card bg='Light'>
-            <Card.Body>
-                <Row>
-                    <Col xs={8}>
-                        <img src={hotel.resort.image.url} alt={hotel.resort.image.description} />
-                        <button onClick={toggleExpandDescription}>{expandDescription ? <><b>Read less</b> about this hotel 🔼</>: <><b>Read more</b> about this hotel 🔽</>}</button>
-                    </Col>
-                    <Col>
-                        <ul>
-                            <a href="">
-                                <h2>{hotel.resort.name}</h2>
-                            </a>
-                            <p>{hotel.resort.regionName}, {hotel.resort.countryName}</p>
-                            <p>{displayRating()}</p>
-                            <p>{displayParty()}</p>
-
-                            <p>{displayDate()} for <b>{hotel.bookingDetails.lengthOfStay} days</b></p>
-                            <p>departing from <b>{hotel.flightDetails.departureAirport}</b></p>
-                            <button>Book now<br/>{displayCost()}</button>
-                        </ul>
-                    </Col>  
-                </Row> 
-                <Row>            
-                    <div>
-                        {expandDescription ?  <><h3>Overview</h3><p>{hotel.resort.overview}</p></>: (<></>)}
-                    </div>
-                </Row> 
-            </Card.Body>
-
-            </Card>
+                <Card bg='Light' className="p-0" style={{border:0}}>
+                <Card.Body className="p-0">
+                    <Row>
+                        <Col lg={7}>
+                            <Card.Img src={hotel.resort.image.url} /> 
+                        </Col>
+                        <Col lg={5}>
+                            <Container className="pt-2 pr-3">
+                                <Card.Title className="pt-2" style={{color:'#17317F'}}>
+                                    {hotel.resort.name}
+                                </Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">
+                                    {hotel.resort.regionName}, {hotel.resort.countryName}
+                                    </Card.Subtitle>
+                                <Card.Text className="my-2">
+                                    {displayRating()}
+                                </Card.Text>
+                                <Card.Text className="my-0">
+                                    {displayParty()}
+                                </Card.Text>
+                                <Card.Text className="my-0">
+                                    {displayDate()} for <b>{hotel.bookingDetails.lengthOfStay} days</b>
+                                </Card.Text>
+                                <Card.Text className="my-0">
+                                    departing from <b>{hotel.flightDetails.departureAirport}</b>
+                                </Card.Text>
+                                    <Button className="my-3 w-100 pb-0" style={{backgroundColor:'#FEDC07', border:0, color:'#17317F'}} size="lg">
+                                        <h6 className="my-0">Book now</h6>
+                                        <h3>{displayCost()}</h3>
+                                    </Button>       
+                            </Container>
+                        </Col>  
+                    </Row> 
+                    <Row className="pt-0">            
+                        <Accordion flush={false}>
+                            <Accordion.Item eventKey="0" onClick={toggleExpandDescription}>
+                                <Accordion.Header style={{whiteSpace:'pre-wrap'}}>
+                                    {expandDescription ? <><b>Read less</b> about this hotel</>: <><b>Read more</b> about this hotel</>}
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                    {hotel.resort.overview}
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                    </Row> 
+                </Card.Body>
+                </Card>
         </div>
     )
 

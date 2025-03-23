@@ -57,10 +57,10 @@ function HotelResultList() {
     return (
         <Container className="py-5">
             <Row> 
-                <Col md={3}>
+                <Col md={4} >
                     < SortResults applyUserSort={applyUserSort}/>
                 </Col>
-                <Col md={9} className="d-grid gap-1">
+                <Col md={8} className="d-grid gap-1">
                     {hotels.map((hotel) => (
                     < HotelResult hotel={hotel} />
                     ))}
