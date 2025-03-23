@@ -148,8 +148,8 @@ function HotelResult({hotel}:{hotel:Hotel}) {
                         </Col>  
                     </Row> 
                     <Row className="pt-0">            
-                        <Accordion flush={false}>
-                            <Accordion.Item eventKey="0" onClick={toggleExpandDescription}>
+                        <Accordion className="m-0" flush={false}>
+                            <Accordion.Item eventKey="0" onClick={toggleExpandDescription} style={{ border:0}}>
                                 <Accordion.Header style={{whiteSpace:'pre-wrap'}}>
                                     {expandDescription ? <><b>Read less</b> about this hotel</>: <><b>Read more</b> about this hotel</>}
                                 </Accordion.Header>
