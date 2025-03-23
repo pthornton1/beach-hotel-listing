@@ -13,18 +13,25 @@ function SortResults({applyUserSort}:sortResultProps) {
         applyUserSort(changeTo)
     };
 
+    function styleButton(buttonType:sortApplied) {
+        return {
+            backgroundColor: sort === buttonType ? '#17317F' : 'white',
+            color: sort === buttonType ? 'white' : '#17317F'
+        }
+      };
+
     return (
         <Container className='pb-4 pr-3'>
             <div className="d-grid gap-1">
-                <Button variant={sort === 'alphabetically' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('alphabetically')}>
+                <Button variant='light' style={styleButton('alphabetically')} size="lg" onClick={() => changeSort('alphabetically')}>
                     sort <b>alphabetically</b> 🔤
                 </Button>
 
-                <Button variant={sort === 'price' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('price')}>
+                <Button variant='light' style={styleButton('price')} size="lg" onClick={() => changeSort('price')}>
                     sort by <b>price</b> 💵
                 </Button>
 
-                <Button variant={sort === 'rating' ? 'primary' : 'secondary'} size="lg" onClick={() => changeSort('rating')}>
+                <Button variant='light' style={styleButton('rating')} size="lg" onClick={() => changeSort('rating')}>
                     Sort by <b>star rating</b> ⭐️
                 </Button>
             </div>
