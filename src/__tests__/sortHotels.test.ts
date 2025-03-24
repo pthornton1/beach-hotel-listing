@@ -3,7 +3,10 @@ import { testHotels } from "../test_helper/testHotels";
   
       describe('sortHotels function', () => {
 
-        test 
+        test('handels empty input', () => {
+            const sortedHotels = sortHotels([], 'alphabetically');
+            expect(sortedHotels).toEqual([]);
+          }); 
 
         test('sorts hotels alphabetically', () => {
           const sortedHotels = sortHotels(testHotels, 'alphabetically');
@@ -14,9 +17,9 @@ import { testHotels } from "../test_helper/testHotels";
       
         test('sorts hotels by price', () => {
           const sortedHotels = sortHotels(testHotels, 'price');
-          expect(sortedHotels[0].bookingDetails.price.amount).toBe(1136.5);
+          expect(sortedHotels[2].bookingDetails.price.amount).toBe(1136.5);
           expect(sortedHotels[1].bookingDetails.price.amount).toBe(696.8); 
-          expect(sortedHotels[2].bookingDetails.price.amount).toBe(499.99); 
+          expect(sortedHotels[0].bookingDetails.price.amount).toBe(499.99); 
         });
       
         test('sorts hotels by rating', () => {
@@ -26,11 +29,11 @@ import { testHotels } from "../test_helper/testHotels";
           expect(sortedHotels[2].resort.starRating).toBe(3); 
         });
       
-        test('returns hotels in by price no sorting is specified', () => {
+        test('returns hotels by price no sorting is specified', () => {
           const sortedHotels = sortHotels(testHotels);
-          expect(sortedHotels[0].bookingDetails.price.amount).toBe(1136.5);
+          expect(sortedHotels[2].bookingDetails.price.amount).toBe(1136.5);
           expect(sortedHotels[1].bookingDetails.price.amount).toBe(696.8); 
-          expect(sortedHotels[2].bookingDetails.price.amount).toBe(499.99); 
+          expect(sortedHotels[0].bookingDetails.price.amount).toBe(499.99); 
         });
       });
       
