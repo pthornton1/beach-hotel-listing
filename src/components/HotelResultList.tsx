@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SortResults from "./SortResults";
 import HotelResult from "./HotelResult";
 import { DATA_API } from "../config/config";
-import {Hotel, sortApplied} from '../types/types'
+import {Hotel, sortApplied} from '../types/types';
 import sortHotels from './sortHotels';
 
 import Container from 'react-bootstrap/Container';
@@ -30,8 +30,7 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
                 setHotels(sortedData);
             } catch (error) {
                 setError('Error fetching hotels:' + (error instanceof Error ? error.message : 'Unknown error'));
-                // Optionally set an error state to display to the user
-                setHotels([]); // Clear hotels or display a fallback state
+                setHotels([]);
             }
         };
         fetchData();
@@ -41,13 +40,13 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
 
       
     function applyUserSort(by:sortApplied = 'alphabetically') {
-        setHotels(sortHotels(hotels, by))
-    }
+        setHotels(sortHotels(hotels, by));
+    };
 
     // handle error cases 
     if (error) {
         return <p>{error}</p>
-    }
+    };
     
     return (
         <Container className="py-5">
