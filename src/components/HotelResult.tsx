@@ -98,21 +98,7 @@ function HotelResult({hotel}:{hotel:Hotel}) {
         const ratingString = ratingLookUp[rating]
         return <>{ratingString}</>
     }
-
-//     <div class="card mb-3" style="max-width: 540px;">
-//   <div class="row no-gutters">
-//     <div class="col-md-4">
-//       <img src="..." class="card-img" alt="...">
-//     </div>
-//     <div class="col-md-8">
-//       <div class="card-body">
-//         <h5 class="card-title">Card title</h5>
-//         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-//         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-//       </div>
-//     </div>
-//   </div>
-// </div>
+    
     return (
         <div className="hotelResult" key={hotel.resort.id}>
                 <Card bg='Light' className="p-0" style={{border:0}}>
@@ -141,9 +127,9 @@ function HotelResult({hotel}:{hotel:Hotel}) {
                                 <Card.Text className="my-0">
                                     departing from <b>{hotel.flightDetails.departureAirport}</b>
                                 </Card.Text>
-                                    <Button className="my-3 w-100 pb-0" style={{backgroundColor:'#FEDC07', border:0, color:'#17317F'}} size="lg">
-                                        <h6 className="my-0">Book now</h6>
-                                        <h3>{displayCost()}</h3>
+                                    <Button className="my-2 w-100 pb-2" style={{backgroundColor:'#FEDC07', border:0, color:'#17317F'}} size="lg">
+                                        <span className="my-0 h6">Book now<br /></span>
+                                        <span className="my-0 h3">{displayCost()}</span>   
                                     </Button>       
                             </Container>
                         </Col>  
