@@ -12,14 +12,27 @@ import Col from 'react-bootstrap/Col';
 
 function HotelResultList({url=DATA_API}:{url?:string}) {
     const [hotels, setHotels] = useState<Hotel[]>([]);
+    const [error, setError] = useState<string | null>(null);
+
 
     useEffect(() =>  {
         const fetchData = async() => {
-            const response = await fetch(url);
-            const data = await response.json();
-            const sortedData = sortHotels(data);
-            setHotels(sortedData)
-        }
+            try {
+                const response = await fetch(url);
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+    
+                const data = await response.json();
+                const sortedData = sortHotels(data);
+                setHotels(sortedData);
+            } catch (error) {
+                setError('Error fetching hotels:' + (error instanceof Error ? error.message : 'Unknown error'));
+                // Optionally set an error state to display to the user
+                setHotels([]); // Clear hotels or display a fallback state
+            }
+        };
         fetchData();
         
     },[url]);
@@ -55,6 +68,11 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
         setHotels(sortHotels(hotels, by))
     }
 
+    // handle error cases 
+    if (error) {
+        return <p>{error}</p>
+    }
+    
     return (
         <Container className="py-5">
             <Row> 
