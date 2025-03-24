@@ -5,7 +5,7 @@ function sortHotels(hotelList: Hotel[], by:sortApplied = 'price'):Hotel[] {
     const updatedHotels = [...hotelList]
     if (by==='price') {
         updatedHotels.sort((a,b) => {
-            return b.bookingDetails.price.amount - a.bookingDetails.price.amount
+            return  a.bookingDetails.price.amount - b.bookingDetails.price.amount
         })
     }
     if (by==='rating') {
