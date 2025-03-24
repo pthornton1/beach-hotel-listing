@@ -11,6 +11,7 @@ General Approach I took:
 My thoughts:
 - Mostly happy with how it looks and functions
 - I definitely should have written the tests earlier - at least for the core functionallity eg. sort. I found I had to refactor some of the code to make it more testable
+- Could also do with more tests - particularly integration testing. Eg. check that clikcing the sort buttons actually sorts the result cards in the right order
 - Wasn't that familiar with the async functionallity in js so had to look that up and how to test async
 - There's some areas that could be improved. Some ideas:
   - Error handling for incorrect data given eg. unexpected format, missing values maybe
