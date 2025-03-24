@@ -10,19 +10,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-function HotelResultList() {
+function HotelResultList({url=DATA_API}:{url?:string}) {
     const [hotels, setHotels] = useState<Hotel[]>([]);
 
     useEffect(() =>  {
         const fetchData = async() => {
-            const response = await fetch(DATA_API);
+            const response = await fetch(url);
             const data = await response.json();
             const sortedData = sortHotels(data);
             setHotels(sortedData)
         }
         fetchData();
         
-    },[]);
+    },[url]);
 
 
     function sortHotels(hotelList: Hotel[], by:sortApplied = 'alphabetically'):Hotel[] {
@@ -63,7 +63,7 @@ function HotelResultList() {
                 </Col>
                 <Col md={8} className="d-grid gap-1">
                     {hotels.map((hotel) => (
-                    < HotelResult hotel={hotel} />
+                    < HotelResult key={hotel.resort.id} hotel={hotel} />
                     ))}
                 </Col>
             </Row>
