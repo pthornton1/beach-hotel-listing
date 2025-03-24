@@ -4,20 +4,21 @@ General Approach I took:
 - Created the app using react-create-app (just realised this was depreciated in Feb 2025, could use Vite instead)
 - Sketched out the general components and relationship that I wanted
 - Created the blueprints for the components without all implementation details
-- Added the state and props and the functionallity to components including sort
-- Added in the styling using React Boostrap and some inline css where needed
-- Added in some tests to test rendering and behaciour of components (see note)
+- Added the state and props and the functionality to components including sort
+- Added in the styling using React Bootstrap and some inline css where needed
+- Added in some tests to test rendering and behaviour of components (see note)
 
 My thoughts:
 - Mostly happy with how it looks and functions
-- I definitely should have written the tests earlier - at least for the core functionallity eg. sort. I found I had to refactor some of the code to make it more testable
-- Could also do with more tests - particularly integration testing. Eg. check that clikcing the sort buttons actually sorts the result cards in the right order
-- Wasn't that familiar with the async functionallity in js so had to look that up and how to test async
+- I definitely should have written the tests earlier - at least for the core functionality eg. sort. I found I had to refactor some of the code to make it more testable
+- Could also do with more tests - particularly integration testing. Eg. check that clicking the sort buttons actually sorts the result cards in the right order
+- Wasn't that familiar with the async functionality in js so had to look that up and how to test async
 - There's some areas that could be improved. Some ideas:
   - Error handling for incorrect data given eg. unexpected format, missing values maybe
   - The state 'Applied Sort' should be bundled in an object with hotels as I'm changing the state of both at the same time
   - Add a prop passed to SortResults with the sort buttons available - this would make it more reusable in other contexts. 
-  - Make some of the functions in HotelResult pure functions and make into a module which can be used by other components. Eg. parsing the currency will probably be done often in multiple places 
+  - Make some of the functions in HotelResult pure functions and make them into a module which can be used by other components. Eg. parsing the currency will probably be done often in multiple places 
+
 
 
 ## Available Scripts
