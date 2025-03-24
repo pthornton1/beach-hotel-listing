@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 function SortResults({applyUserSort}:sortResultProps) {
-    const [sort, setSort] = useState<sortApplied>('alphabetically');
+    const [sort, setSort] = useState<sortApplied>('price');
 
     function changeSort(changeTo:sortApplied) {
         setSort(changeTo)

@@ -25,7 +25,7 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
     },[url]);
 
 
-    function sortHotels(hotelList: Hotel[], by:sortApplied = 'alphabetically'):Hotel[] {
+    function sortHotels(hotelList: Hotel[], by:sortApplied = 'price'):Hotel[] {
         // To do: write sort function that sorts hotels and then calls setHotels
         const updatedHotels = [...hotelList]
         if (by==='price') {
