@@ -1,7 +1,7 @@
 # On the Beach Frontend Test - Philip Thornton
 
 General Approach I took:
-- Created the app using react-create-app
+- Created the app using react-create-app (just realised this was depreciated in Feb 2025, could use Vite instead)
 - Sketched out the general components and relationship that I wanted
 - Created the blueprints for the components without all implementation details
 - Added the state and props and the functionallity to components including sort
