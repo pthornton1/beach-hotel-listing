@@ -24,15 +24,15 @@ function SortResults({applyUserSort}:sortResultProps) {
     return (
         <Container className='pb-4 pr-3'>
             <div className="d-grid gap-1">
-                <Button variant='light' style={styleButton('alphabetically')} size="lg" onClick={() => changeSort('alphabetically')}>
+                <Button name='sort alphabetically' variant='light' style={styleButton('alphabetically')} size="lg" onClick={() => changeSort('alphabetically')}>
                     sort <b>alphabetically</b> 🔤
                 </Button>
 
-                <Button variant='light' style={styleButton('price')} size="lg" onClick={() => changeSort('price')}>
+                <Button name='sort price' variant='light' style={styleButton('price')} size="lg" onClick={() => changeSort('price')}>
                     sort by <b>price</b> 💵
                 </Button>
 
-                <Button variant='light' style={styleButton('rating')} size="lg" onClick={() => changeSort('rating')}>
+                <Button name='sort rating' variant='light' style={styleButton('rating')} size="lg" onClick={() => changeSort('rating')}>
                     Sort by <b>star rating</b> ⭐️
                 </Button>
             </div>
