@@ -5,7 +5,7 @@ General Approach I took:
 - Sketched out the general components and relationship that I wanted
 - Created the blueprints for the components without all implementation details
 - Added the state and props and the functionality to components including sort
-- Added in the styling using React Bootstrap and some inline css where needed
+- Added in the styling using React Bootstrap and some inline css where needed. Bootstrap simplifies the css and keeps it responsive on mobile etc. and I've ensured the breakpoints work for different screen sizes.
 - Added in some tests to test rendering and behaviour of components (see note)
 
 My thoughts:
