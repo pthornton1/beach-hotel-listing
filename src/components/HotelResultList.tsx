@@ -5,6 +5,7 @@ import HotelResult from "./HotelResult";
 import { DATA_API } from "../config/config";
 import {Hotel, sortApplied} from '../types/types';
 import sortHotels from './sortHotels';
+import Filter from './Filter';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,6 +15,8 @@ import Col from 'react-bootstrap/Col';
 function HotelResultList({url=DATA_API}:{url?:string}) {
     const [hotels, setHotels] = useState<Hotel[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [filteredHotels, setFilteredHotels] = useState<Hotel[]>([]);
+
 
 
     useEffect(() =>  {
@@ -28,6 +31,7 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
                 const data = await response.json();
                 const sortedData = sortHotels(data);
                 setHotels(sortedData);
+                setFilteredHotels(sortedData);
             } catch (error) {
                 setError('Error fetching hotels:' + (error instanceof Error ? error.message : 'Unknown error'));
                 setHotels([]);
@@ -43,6 +47,13 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
         setHotels(sortHotels(hotels, by));
     };
 
+    function applyFilter(by:string='price', value:number=200) {
+        const updatedHotels = hotels.filter((hotel) => {
+            return hotel.bookingDetails.price.amount < value
+        })
+        setFilteredHotels(updatedHotels)
+    }
+
     // handle error cases 
     if (error) {
         return <p>{error}</p>
@@ -51,11 +62,16 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
     return (
         <Container className="py-5">
             <Row> 
+                <Filter applyFilter={applyFilter}/>
+            </Row>
+
+            <Row> 
                 <Col md={4} >
                     < SortResults applyUserSort={applyUserSort}/>
                 </Col>
                 <Col md={8} className="d-grid gap-1">
-                    {hotels.map((hotel) => (
+
+                    {filteredHotels.map((hotel) => (
                     < HotelResult key={hotel.resort.id} hotel={hotel} />
                     ))}
                 </Col>
