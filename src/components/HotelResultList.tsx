@@ -58,13 +58,18 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
         }
     },[])
 
-    let filteredHotels = hotels
-    if (filter !== null) {
-        const filterValue:number = filter.value === null ? 0 : filter.value;
-        filteredHotels = hotels.filter((hotel) => {
-        return hotel.bookingDetails.price.amount < filterValue
-        })
+    function filterHotels(hotels:Hotel[]):Hotel[] {
+        let filteredHotels = hotels
+        if (filter !== null) {
+            const filterValue:number = filter.value === null ? 0 : filter.value;
+            filteredHotels = hotels.filter((hotel) => {
+            return hotel.bookingDetails.price.amount < filterValue
+            })
+        }
+        return filteredHotels
     }
+
+    const filteredHotels = filterHotels(hotels)
 
     // handle error cases 
     if (error) {
