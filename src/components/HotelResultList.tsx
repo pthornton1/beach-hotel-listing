@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEffect, useState } from "react";
+import React, { useCallback } from 'react';
+import { useEffect, useState, memo } from "react";
 import SortResults from "./SortResults";
 import HotelResult from "./HotelResult";
 import { DATA_API } from "../config/config";
@@ -11,11 +11,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+const MemoizedSortResults = memo(SortResults)
+const MemoizedFilter = memo(Filter)
+
 
 function HotelResultList({url=DATA_API}:{url?:string}) {
     const [hotels, setHotels] = useState<Hotel[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const [filteredHotels, setFilteredHotels] = useState<Hotel[]>([]);
+    const [filter, setFilter] = useState<{by:string | null, value:number | null} | null>(null);
 
 
 
@@ -31,7 +34,6 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
                 const data = await response.json();
                 const sortedData = sortHotels(data);
                 setHotels(sortedData);
-                setFilteredHotels(sortedData);
             } catch (error) {
                 setError('Error fetching hotels:' + (error instanceof Error ? error.message : 'Unknown error'));
                 setHotels([]);
@@ -43,15 +45,25 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
 
 
       
-    function applyUserSort(by:sortApplied = 'alphabetically') {
+    const applyUserSort = useCallback((by:sortApplied = 'alphabetically') => {
         setHotels(sortHotels(hotels, by));
-    };
+    }, [hotels]);
 
-    function applyFilter(by:string='price', value:number=200) {
-        const updatedHotels = hotels.filter((hotel) => {
-            return hotel.bookingDetails.price.amount < value
+    const applyFilter = useCallback((by:string|null='price', value:number|null=200) : void =>  {
+        if (by === null) {
+            setFilter(null)
+        }
+        else {
+            setFilter({by, value})
+        }
+    },[])
+
+    let filteredHotels = hotels
+    if (filter !== null) {
+        const filterValue:number = filter.value === null ? 0 : filter.value;
+        filteredHotels = hotels.filter((hotel) => {
+        return hotel.bookingDetails.price.amount < filterValue
         })
-        setFilteredHotels(updatedHotels)
     }
 
     // handle error cases 
@@ -62,12 +74,12 @@ function HotelResultList({url=DATA_API}:{url?:string}) {
     return (
         <Container className="py-5">
             <Row> 
-                <Filter applyFilter={applyFilter}/>
+                <MemoizedFilter applyFilter={applyFilter}/>
             </Row>
 
             <Row> 
                 <Col md={4} >
-                    < SortResults applyUserSort={applyUserSort}/>
+                    < MemoizedSortResults applyUserSort={applyUserSort}/>
                 </Col>
                 <Col md={8} className="d-grid gap-1">
 

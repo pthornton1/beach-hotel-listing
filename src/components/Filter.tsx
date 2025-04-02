@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Filter ({applyFilter}:{applyFilter: (by:string, value:number) => void}) {
+export default function Filter ({applyFilter}:{applyFilter: (by:string|null, value:number|null) => void}) {
     const [input, setInput] = useState<number | string>('')
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +15,7 @@ export default function Filter ({applyFilter}:{applyFilter: (by:string, value:nu
             const passedValue:number = Number(input)
             applyFilter('price', passedValue)
         }
+        if (input === '') applyFilter(null, null)
     }
 
     return <>
